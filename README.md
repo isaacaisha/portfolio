@@ -161,7 +161,7 @@ DEFAULT_FROM_EMAIL=you@example.com
 
 ## 📫 Contact
 
-If you run into issues or have suggestions, open an issue or email me at `<medusadbt@gmail.com>`.
+If you run into issues or have suggestions, open an issue or email me at `medusadbt@gmail.com`.
 
 ---
 
