@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static form_tags %}
+
+{% block title %}Add Project{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card shadow-sm bg-light">
+        <div class="card-header text-primary">
+            <h2 class="text-center mb-0">Add New Project</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="row g-4">
+                    <!-- Title -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.title.label_tag }}
+                            {{ form.title|add_class:"form-control" }}
+                            {% if form.title.help_text %}
+                            <small class="form-text text-muted">{{ form.title.help_text }}</small>
+                            {% endif %}
+                            {{ form.title.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Slug -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.slug.label_tag }}
+                            {{ form.slug|add_class:"form-control" }}
+                            {% if form.slug.help_text %}
+                            <small class="form-text text-muted">{{ form.slug.help_text }}</small>
+                            {% endif %}
+                            {{ form.slug.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Thumbnail -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.thumbnail.label_tag }}
+                            {{ form.thumbnail|add_class:"form-control" }}
+                            {{ form.thumbnail.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.image.label_tag }}
+                            {{ form.image|add_class:"form-control" }}
+                            {{ form.image.errors }}
+                        </div>
+                    </div>
+
+                    <!-- URL -->
+                    <div class="col-12">
+                        <div class="form-group">
+                            {{ form.url.label_tag }}
+                            {{ form.url|add_class:"form-control" }}
+                            {% if form.url.help_text %}
+                            <small class="form-text text-muted">{{ form.url.help_text }}</small>
+                            {% endif %}
+                            {{ form.url.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="col-12">
+                        <div class="form-group">
+                            {{ form.description.label_tag }}
+                            {{ form.description|add_class:"form-control" }}
+                            {{ form.description.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Features CSV -->
+                    <div class="col-12">
+                        <div class="form-group">
+                            {{ form.features_csv.label_tag }}
+                            {{ form.features_csv|add_class:"form-control" }}
+                            {% if form.features_csv.help_text %}
+                            <small class="form-text text-muted">{{ form.features_csv.help_text }}</small>
+                            {% endif %}
+                            {{ form.features_csv.errors }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-4 d-flex justify-content-between">
+                    <a href="{% url 'index' %}" class="btn btn-outline-warning me-2">
+                        <i class="fas fa-ban me-1"></i> Cancel
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Save Project
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

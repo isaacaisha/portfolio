@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Notifications{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Message Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+        Contact Message Notifications
+    </h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+
+    {% if messages_list %}
+    <table class="container table table-striped">
+        <thead>
+            <tr>
+                <th>When</th>
+                <th>From</th>
+                <th>Subject</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in messages_list %}
+            <tr>
+                <td>{{ msg.sent_at|date:"Y-m-d H:i" }}</td>
+                <td>{{ msg.name }}</td>
+                <td>{{ msg.subject }}</td>
+                <td><a href="mailto:{{ msg.email }}">{{ msg.email }}</a></td>
+                <td>{{ msg.phone|default:"—" }}</td>
+                <td>{{ msg.message }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center">No contact messages yet.</p>
+    {% endif %}
+    <div class="text-center mt-5">
+        <a href="{% url 'index' %}" class="btn btn-outline-primary me-2">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
+    </div>
+</div>
+{% endblock %}
