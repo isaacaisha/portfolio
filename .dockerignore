@@ -1,0 +1,16 @@
+# .dockerignore
+*
+!.gitignore
+!requirements.txt
+!manage.py
+!portfolio/
+!portfolio_app/
+!templates/
+!static/
+!staticfiles/
+!media/
+!entrypoint.sh
+!docker-compose*
+!Dockerfile
+!.env.prod
+!locale/

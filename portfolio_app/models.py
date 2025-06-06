@@ -1,7 +1,8 @@
 # /home/siisi/portfolio/portfolio_app/models.py
 
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
+from django.db.models import JSONField
+from django.utils.translation import get_language
 
 
 class Project(models.Model):
@@ -21,11 +22,11 @@ class Project(models.Model):
     description = models.TextField(
         help_text="Short blurb under the title"
     )
-    features    = ArrayField(
-        models.CharField(max_length=200),
+    # Store features per language in a JSON field: {"en": [...], "es": [...], ...}
+    features    = JSONField(
+        default=dict,
         blank=True,
-        default=list,
-        help_text="List of bullet-point features"
+        help_text="Mapping of language codes to feature lists"
     )
     url         = models.URLField(
         max_length=300,
@@ -42,6 +43,15 @@ class Project(models.Model):
     def get_absolute_url(self):
         # Handy if you link directly to the modal
         return f"#{self.modal_id()}"
+
+    @property
+    def localized_features(self):
+        """
+        Return features list for current language,
+        falling back to English if not available.
+        """
+        lang = get_language()[:2]
+        return self.features.get(lang) or self.features.get('en', [])
 
 
 class ContactMessage(models.Model):

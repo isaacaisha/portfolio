@@ -1,6 +1,8 @@
 # /home/siisi/portfolio/portfolio_app/forms.py
 
 from django import forms
+from django.utils.translation import gettext_lazy as _
+
 from .models import Project
 
 
@@ -33,39 +35,44 @@ class ProjectForm(forms.ModelForm):
         
 
 class ContactForm(forms.Form):
-    name    = forms.CharField(
+    name = forms.CharField(
+        label=_("Your name"),  # <- this is the translated label
         max_length=100,
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "Your name"
+            "placeholder": _("Your name")  # still required for floating labels to work
         })
     )
-    email   = forms.EmailField(
+    email = forms.EmailField(
+        label=_("Email address"),
         widget=forms.EmailInput(attrs={
             "class": "form-control",
-            "placeholder": "you@example.com"
+            "placeholder": _("you@example.com")
         })
     )
-    phone   = forms.CharField(
+    phone = forms.CharField(
+        label=_("Phone number"),
         max_length=20,
         required=False,
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "(123) 456-7890"
+            "placeholder": _("(123) 456-7890")
         })
     )
     subject = forms.CharField(
+        label=_("Subject"),
         max_length=150,
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "Subject"
+            "placeholder": _("Subject")
         })
     )
     message = forms.CharField(
+        label=_("Message"),
         widget=forms.Textarea(attrs={
             "class": "form-control",
             "rows": 6,
-            "placeholder": "Your message..."
+            "placeholder": _("Your message...")
         })
     )
 

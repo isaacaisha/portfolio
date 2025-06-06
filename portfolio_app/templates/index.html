@@ -1,7 +1,6 @@
 <!-- /home/siisi/portfolio/portfolio_app/templates/index.html -->
-
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 {% block content %}
 
         <!-- Portfolio Section-->
@@ -9,7 +8,7 @@
             <div class="container">
                 <!-- Portfolio Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-                    Portfolio
+                    {% trans 'Portfolio' %}
                 </h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
@@ -54,10 +53,10 @@
                         </div>
                         <img class="img-fluid rounded mb-5" src="{% static project.image %}" alt="{{ project.title }}" />
                         <p class="mb-2">
-                            <strong>{{ project.title }} Overview:</strong><br>{{ project.description }}
+                            <strong>{{ project.title }} {% trans 'Overview' %}:</strong><br>{{ project.description }}
                         </p>
                         <ul class="text-start mb-4">
-                            {% for feat in project.features %}
+                            {% for feat in project.localized_features %}
                             <li>
                                 <i class="fas fa-check text-primary me-2"></i>{{ feat }}
                             </li>
@@ -68,7 +67,7 @@
                             {% if project.url %}
                             <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                                 <i class="fa-brands fa-searchengin me-1"></i>
-                                See Project
+                                {% trans 'See Project' %}
                             </a>
                             {% endif %}
                             <br>
@@ -87,7 +86,7 @@
         <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">
                 <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-white">{% trans 'About' %}</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -97,19 +96,16 @@
                 <!-- About Section Content-->
                 <div class="row">
                     <div class="col-lg-4 mb-4">
-                        <h5>Frontend Expertise</h5>
-                        <p class="lead">React, Vue, Angular, HTML5, CSS3, Bootstrap & Tailwind—creating pixel-perfect, accessible,
-                            responsive interfaces.</p>
+                        <h5>{% trans 'Frontend Expertise' %}</h5>
+                        <p class="lead">{% trans 'React, Vue, Angular, HTML5, CSS3, Bootstrap & Tailwind—creating pixel-perfect, accessible, responsive interfaces' %}.</p>
                     </div>
                     <div class="col-lg-4 mb-4">
                         <h5>Backend Mastery</h5>
-                        <p class="lead">Python frameworks (Django, Flask, FastAPI), Node.js; REST & GraphQL APIs, PostgreSQL, Redis, and
-                            microservices architecture.</p>
+                        <p class="lead">{% trans 'Python frameworks (Django, Flask, FastAPI), Node.js; REST & GraphQL APIs, PostgreSQL, Redis, and microservices architecture' %}.</p>
                     </div>
                     <div class="col-lg-4 mb-4">
                         <h5>AI & DevOps</h5>
-                        <p class="lead">OpenAI API (GPT, DALL·E), LangChain, Docker, Kubernetes, CI/CD pipelines with GitHub Actions,
-                            logging & monitoring.</p>
+                        <p class="lead">{% trans 'OpenAI API (GPT, DALL·E), LangChain, Docker, Kubernetes, CI/CD pipelines with GitHub Actions, logging & monitoring' %}.</p>
                     </div>
                 </div>
             </div>
@@ -120,7 +116,7 @@
             <div class="container">
                 <!-- Contact Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-                    Contact Me
+                    {% trans 'Contact Me' %}
                 </h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
@@ -128,7 +124,7 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <p class="text-center text-muted mb-5">Have a question or want to work together? Fill out the form below.</p>
+                <p class="text-center text-muted mb-5">{% trans 'Have a question or want to work together? Fill out the form below' %}.</p>
                 <form method="post" novalidate>
                     {% csrf_token %}
                     <div class="row">
@@ -168,7 +164,7 @@
                             </div>
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-lg">{% trans 'Send Message' %}</button>
                         </div>
                     </div>
                 </form>

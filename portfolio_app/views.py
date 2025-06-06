@@ -6,9 +6,8 @@ from django.contrib           import messages
 from django.conf              import settings
 from django.utils.translation import gettext as _
 from django.utils             import timezone
-
-from .models import Project, ContactMessage
-from .forms import ProjectForm, ContactForm
+from .models                  import Project, ContactMessage
+from .forms                   import ProjectForm, ContactForm
 
 
 def index(request):
@@ -66,7 +65,7 @@ def admin_proxy(request):
     but let superusers through to the real admin at /superadmin/.
     """
     if not request.user.is_superuser:
-        messages.warning(request, "Access denied: you must be a superuser to view the admin panel.")
+        messages.warning(request, _("Access denied: you must be a superuser to view the admin panel."))
         return redirect('index')
 
     # superuser → forward them to the real admin
@@ -76,14 +75,14 @@ def admin_proxy(request):
 def project_create(request):
     # Deny non-superusers
     if not request.user.is_authenticated or not request.user.is_superuser:
-        messages.warning(request, "Access denied: you must be a superuser to add projects.")
+        messages.warning(request, _("Access denied: you must be a superuser to add projects."))
         return redirect('index')
 
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Project created successfully!")
+            messages.success(request, _("Project created successfully!"))
             return redirect('index')
     else:
         form = ProjectForm()
@@ -99,7 +98,7 @@ def notifications(request):
     List all ContactMessage entries for superusers.
     """
     if not request.user.is_superuser:
-        messages.warning(request, "Access denied: you must be a superuser to view notifications.")
+        messages.warning(request, _("Access denied: you must be a superuser to view notifications."))
         return redirect('index')
 
     msgs = ContactMessage.objects.order_by('-sent_at')

@@ -1,3 +1,4 @@
+# /home/siisi/portfolio/portfolio/settings.py
 import os
 import dotenv
 import dj_database_url
@@ -78,6 +79,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'modeltranslation',  
     'portfolio_app'
 ]
 

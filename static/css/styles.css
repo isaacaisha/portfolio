@@ -384,6 +384,7 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
+  appearance: none;
   -webkit-appearance: button;
 }
 button:not(:disabled),
@@ -442,6 +443,7 @@ legend + * {
 
 [type=search] {
   outline-offset: -2px;
+  appearance: none;
   -webkit-appearance: textfield;
 }
 
@@ -463,6 +465,7 @@ legend + * {
 
 ::file-selector-button {
   font: inherit;
+  appearance: none;
   -webkit-appearance: button;
 }
 
@@ -10995,6 +10998,27 @@ html {
     font-size: 1.5rem;
   }
 }
+
+/*==============================
+=>  Translate Language BTN Section
+================================*/
+.language-selector {
+  position: fixed;
+  top: 5rem;
+  right: 1rem;
+  z-index: 1051;
+}
+
+.language-form select {
+  padding: 3px 5px; /* Smaller padding */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px; /* Smaller font size */
+}
+
+/*==============================
+=>  Portfolio Section
+================================*/
 .portfolio .portfolio-item {
   cursor: pointer;
   position: relative;

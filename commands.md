@@ -69,10 +69,10 @@ docker compose -f docker-compose.prod.yml -p portfolio_prod run portfolio python
 docker-compose -f docker-compose.prod.yml -p portfolio_prod down --volumes --remove-orphans
 docker system prune -a --volumes 
 docker-compose -f docker-compose.prod.yml -p portfolio_prod down -v
-docker-compose -f docker-compose.prod.yml -p portfolio_prod up -d --build
+docker-compose -f docker-compose.prod.yml -p portfolio_prod up -d --build --remove-orphans
 docker-compose -f docker-compose.prod.yml -p portfolio_prod ps
 docker-compose -f docker-compose.prod.yml -p portfolio_prod down
-docker-compose -f docker-compose.prod.yml -p portfolio_prod up -d --remove-orphans
+docker-compose -f docker-compose.prod.yml -p portfolio_prod up -d
 docker-compose -f docker-compose.prod.yml -p portfolio_prod logs -f nginx
 docker-compose -f docker-compose.prod.yml -p portfolio_prod logs -f
 

@@ -1,3 +1,5 @@
+# /home/siisi/portfolio/portfolio/urls.py
+
 from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import set_language
 
@@ -22,4 +24,3 @@ urlpatterns += i18n_patterns(
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

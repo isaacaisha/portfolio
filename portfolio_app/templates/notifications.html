@@ -1,11 +1,14 @@
+<!-- /home/siisi/portfolio/portfolio_app/templates/notifications.html -->
+
 {% extends "base.html" %}
-{% block title %}Notifications{% endblock %}
+{% load static i18n %}
+{% block title %}{% trans 'Notifications' %}{% endblock %}
 
 {% block content %}
 <div class="container py-5">
     <!-- Message Section Heading-->
     <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-        Contact Message Notifications
+        {% trans 'Contact Message Notifications' %}
     </h2>
     <!-- Icon Divider-->
     <div class="divider-custom">
@@ -18,12 +21,12 @@
     <table class="container table table-striped">
         <thead>
             <tr>
-                <th>When</th>
-                <th>From</th>
-                <th>Subject</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Message</th>
+                <th>{% trans 'When' %}</th>
+                <th>{% trans 'From' %}</th>
+                <th>{% trans 'Subject' %}</th>
+                <th>{% trans 'Email' %}</th>
+                <th>{% trans 'Phone' %}</th>
+                <th>{% trans 'Message' %}</th>
             </tr>
         </thead>
         <tbody>
@@ -40,11 +43,11 @@
         </tbody>
     </table>
     {% else %}
-    <p class="text-center">No contact messages yet.</p>
+    <p class="text-center">{% trans 'No contact messages yet' %}.</p>
     {% endif %}
     <div class="text-center mt-5">
         <a href="{% url 'index' %}" class="btn btn-outline-primary me-2">
-            <i class="fa-solid fa-arrow-left"></i> Back
+            <i class="fa-solid fa-arrow-left"></i> {% trans 'Back' %}
         </a>
     </div>
 </div>
