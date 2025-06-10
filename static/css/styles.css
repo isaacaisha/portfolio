@@ -11002,18 +11002,18 @@ html {
 /*==============================
 =>  Translate Language BTN Section
 ================================*/
-.language-selector {
-  position: fixed;
-  top: 5rem;
-  right: 1rem;
-  z-index: 1051;
+.language-form select, .fa-globe {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  cursor: pointer;
 }
 
-.language-form select {
-  padding: 3px 5px; /* Smaller padding */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 12px; /* Smaller font size */
+.language-form select:hover,
+.fa-globe:hover {
+  color: #1abc9c;
 }
 
 /*==============================

@@ -43,24 +43,6 @@
 </head>
 
 <body id="page-top">
-    <!-- Languages-->
-    {% block languages %}
-    <div class="language-selector">
-        <form class="language-form" method="post" action="{% url 'set_language' %}">
-            {% csrf_token %}
-            <select name="language" onchange="this.form.submit()">
-                {% for lang_code, lang_name in LANGUAGES %}
-                <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
-                    {{ lang_name }}
-                </option>
-                {% endfor %}
-            </select>
-            <i class="fa-solid fa-globe text-white"></i>
-            <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-        </form>
-    </div>
-    {% endblock %}
-
     <!-- Navigation-->
     {% block navbar %}
         {% include 'navbar.html' %}

@@ -22,6 +22,7 @@
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-1 rounded" href="#contact">{% trans 'Contact' %}</a>
                 </li>
+                {% if user.is_superuser %}
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-1 rounded" href="{% url 'admin_proxy' %}">{% trans 'Admin' %}</a>
                 </li>
@@ -32,6 +33,21 @@
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-1 rounded" href="{% url 'notifications' %}">{% trans 'Notifications' %}</a>
+                </li>
+                {% endif %}
+                <li class="nav-item mx-0 mx-lg-1">
+                    <form class="language-form nav-link py-3 px-0 px-lg-1 rounded" method="post" action="{% url 'set_language' %}">
+                        {% csrf_token %}
+                        <select name="language" onchange="this.form.submit()">
+                            {% for lang_code, lang_name in LANGUAGES %}
+                            <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
+                                {{ lang_name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <i class="fa-solid fa-globe"></i>
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                    </form>
                 </li>
             </ul>
         </div>
